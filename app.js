@@ -9,6 +9,7 @@ const removeButton = document.getElementById('remove');
 const saveButton = document.getElementById('save-meal');
 
 let ingredients = [];
+let meals = [];
 
 
 function renderIngredients() {
@@ -21,12 +22,29 @@ function renderIngredients() {
 }
 
 form.addEventListener('submit', (e) => {
+//    this will prevent the 1996 behavior
     e.preventDefault();
+    // use built in dom class called formData to get the info out of the form
     const formData = new FormData(form);
-    // look at demo for rest of steps look in read me for link
+    // to get info out of the form use method .get(), which takes in whatever the name property is in the html
+    const inputs = {
+        ingredient: formData.get('ingredient'),
+        quantity: Number(formData.get('quantity')),
+        measurement: formData.get('measurement'), 
+    };
+    ingredients.push(inputs);
+    renderIngredients();
+    form.reset();
 });
 
-renderIngredients();
+removeButton.addEventListener('click', () => {
+    // remove last element from ingredients state
+    ingredients.pop();
+    // re-render list
+    renderIngredients();
+});
+
+
 
 
 // let state

@@ -3,3 +3,7 @@ export function renderIngredient(item) {
     li.textContent = `${item.quantity} ${item.measurement} of ${item.ingredient}`;
     return li;
 }
+
+export function renderMeal(meal) {
+    
+}
