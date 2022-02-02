@@ -4,9 +4,9 @@ import { renderIngredient, renderMeal } from './utils.js';
 const form = document.getElementById('add-ingredient');
 const ingredientList = document.getElementById('ingredient-ul');
 const mealsList = document.getElementById('meals-ul');
+const saveMeal = document.getElementById('save');
 
 const removeButton = document.getElementById('remove');
-const saveButton = document.getElementById('save-meal');
 
 let ingredients = [];
 let meals = [];
@@ -52,10 +52,10 @@ removeButton.addEventListener('click', () => {
     renderIngredients();
 });
 
-mealsList.addEventListener('submit', (e) => {
+saveMeal.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const formData = new FormData(mealsList);
+    const formData = new FormData(saveMeal);
 
     const results = {
         mealName: formData.get('meal-name'),
@@ -63,7 +63,7 @@ mealsList.addEventListener('submit', (e) => {
     };
     meals.push(results);
     renderMeals();
-    mealsList.reset();
+    saveMeal.reset();
 });
 
 
