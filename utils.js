@@ -5,5 +5,7 @@ export function renderIngredient(item) {
 }
 
 export function renderMeal(meal) {
-    
+    const li = document.createElement('li');
+    li.textContent = `${meal.mealName} --- ${meal.totalIngredients} ingredients.`;
+    return li;
 }
